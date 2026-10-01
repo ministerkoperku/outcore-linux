@@ -1,4 +1,4 @@
-Outcore Linux Bridge 0.1.1
+Outcore Linux Bridge 0.1.2
 ==========================
 
 Mod (BepInEx) dla OUTCORE: Desktop Adventures, ktory pozwala grac pod Wine/Protonem:
@@ -29,7 +29,7 @@ INSTALACJA - Arch / Linux (Steam + Proton)
 GDY COS NIE DZIALA
 Wyslij plik BepInEx\LogOutput.log z folderu gry (i opis, w ktorym miejscu stanelo).
 
-ZNANE OGRANICZENIA (0.1.1)
+ZNANE OGRANICZENIA (0.1.2)
 - Postacie chodza po pulpicie i stoja na oknach, ale okna je zaslaniaja (na Windowsie gra
   jest nad oknami). Pod Wine/GameNative nie da sie zrobic przezroczystego okna nad innymi.
 - Kilka mini-programow gry (popupy, pasek odszyfrowywania, MemoryLoader) to aplikacje .NET

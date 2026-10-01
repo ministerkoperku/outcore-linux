@@ -68,6 +68,7 @@ internal sealed class DesktopLayer : MonoBehaviour
 	private Texture2D _probeRead;
 	private int _probeFrame = -1;
 	private bool _probeBroken;
+	private Camera _probeCamera;
 
 	public bool Active { get; private set; }
 
@@ -648,17 +649,28 @@ internal sealed class DesktopLayer : MonoBehaviour
 			if (_probeFrame < 0 || frame - _probeFrame >= 3)
 			{
 				_probeFrame = frame;
+				// A separate camera: rendering the game's own camera a second time runs its
+				// image effects / pixel-perfect scripts and makes the screen flicker.
+				if (_probeCamera == null)
+				{
+					GameObject go = new GameObject("OutcoreLinux probe camera") { hideFlags = HideFlags.HideAndDontSave };
+					DontDestroyOnLoad(go);
+					_probeCamera = go.AddComponent<Camera>();
+					_probeCamera.enabled = false;
+				}
+				_probeCamera.CopyFrom(_camera);
+				_probeCamera.rect = new Rect(0f, 0f, 1f, 1f);
+				_probeCamera.clearFlags = CameraClearFlags.SolidColor;
+				_probeCamera.backgroundColor = Color.clear;
+				_probeCamera.targetTexture = _probeTarget;
 				bool wasActive = _root.activeSelf;
-				RenderTexture previous = _camera.targetTexture;
 				_root.SetActive(false);
 				try
 				{
-					_camera.targetTexture = _probeTarget;
-					_camera.Render();
+					_probeCamera.Render();
 				}
 				finally
 				{
-					_camera.targetTexture = previous;
 					_root.SetActive(wasActive);
 				}
 			}

@@ -15,7 +15,7 @@ namespace OutcoreLinux;
 public sealed class Plugin : BaseUnityPlugin
 {
 	public const string Guid = "koper.outcore.linux";
-	public const string Version = "0.1.1";
+	public const string Version = "0.1.2";
 
 	private static int _mainThreadId;
 
