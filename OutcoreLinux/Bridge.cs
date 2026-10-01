@@ -20,6 +20,22 @@ internal static class Bridge
 {
 	private static void Later(Action action) => MainThread.Post(action);
 
+	// ---- Steam -----------------------------------------------------------------------------
+
+	// If SteamClient.Init throws (GameNative's Steam emulation, no Steam running...), the game
+	// logs "Failed to initialize the steam store service" and never calls its callback, which
+	// holds the entire startup: grey/black screen forever. Continue offline instead.
+	[HarmonyPostfix]
+	[HarmonyPatch(typeof(SteamGameStoreService), nameof(SteamGameStoreService.Initialize))]
+	private static void SteamOffline(SteamGameStoreService __instance, Action onInitializationComplete)
+	{
+		if (!__instance.isInitialized && !Application.isEditor)
+		{
+			Log.Warn("Steam did not initialize; continuing without achievements/DLC");
+			onInitializationComplete?.Invoke();
+		}
+	}
+
 	// ---- helper process -------------------------------------------------------------------
 
 	[HarmonyPrefix]
