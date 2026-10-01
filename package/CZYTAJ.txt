@@ -1,0 +1,37 @@
+Outcore Linux Bridge 0.1.0
+==========================
+
+Mod (BepInEx) dla OUTCORE: Desktop Adventures, ktory pozwala grac pod Wine/Protonem:
+GameNative na telefonie i Steam/Proton na Linuksie (Arch itp.).
+
+CO ROBI
+- Zastepuje WindowsUtility.exe (pomocnik gry, ktory pod Wine wisial -> czarny ekran przy starcie
+  etapow na pulpicie). Gra dostaje odpowiedzi od moda, bez zewnetrznego procesu.
+- Pulpit rysuje gra: tapeta + ikony z folderu Pulpit (C:\users\<ty>\Desktop) + ikona "This PC".
+  Okno gry jest na samym spodzie, inne okna (foldery, Notatnik, Paint) sa nad nim.
+- Wlasny "Eksplorator": okna folderow z ikonami, nawigacja (strzalki, pasek adresu + Enter),
+  przeciaganie plikow (do folderow, na pulpit, na gre), F2 = zmiana nazwy, Delete = kosz.
+- Wlasny prosty Paint (Wine nie ma mspaint): olowek, wypelnianie, gumka, kolory, Ctrl+S.
+- Pasek zadan na dole (tylko na Androidzie) - zminimalizowane okna da sie przywrocic.
+
+INSTALACJA - GameNative (telefon)
+1. Rozpakuj folder OutcoreLinux do Pobranych (Download) - w kontenerze to zwykle dysk D:.
+2. W kontenerze gry uruchom cmd i wpisz:   D:\OutcoreLinux\instaluj.bat
+   (gra jest szukana na A:\; jesli jest gdzie indziej: instaluj.bat "X:\folder")
+3. Uruchom gre. Jesli mod sie nie laduje, dodaj w ustawieniach kontenera zmienna
+   srodowiskowa:  WINEDLLOVERRIDES=winhttp=n,b
+
+INSTALACJA - Arch / Linux (Steam + Proton)
+1. Wymuś Proton dla Outcore (Wlasciwosci -> Zgodnosc), uruchom gre raz i zamknij.
+2. ./install.sh            (sam znajdzie gre w bibliotekach Steam)
+3. Opcje uruchamiania:  WINEDLLOVERRIDES="winhttp=n,b" %command%
+
+GDY COS NIE DZIALA
+Wyslij plik BepInEx\LogOutput.log z folderu gry (i opis, w ktorym miejscu stanelo).
+
+ZNANE OGRANICZENIA (0.1.0)
+- Postacie chodza po pulpicie i stoja na oknach, ale okna je zaslaniaja (na Windowsie gra
+  jest nad oknami). Pod Wine/GameNative nie da sie zrobic przezroczystego okna nad innymi.
+- Kilka mini-programow gry (popupy, pasek odszyfrowywania, MemoryLoader) to aplikacje .NET
+  Framework - potrzebuja wine-mono w kontenerze (Proton ma go w zestawie).
+- Odinstalowanie: odinstaluj.bat (GameNative) albo usun BepInEx, winhttp.dll, doorstop_config.ini.

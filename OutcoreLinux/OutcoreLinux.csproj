@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>OutcoreLinux</AssemblyName>
+    <RootNamespace>OutcoreLinux</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DebugType>none</DebugType>
+    <Deterministic>true</Deterministic>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GameManaged>../game/Outcore_Data/Managed</GameManaged>
+    <BepCore>../deps/bepinex/BepInEx/core</BepCore>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(GameManaged)/UnityEngine.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.ImageConversionModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.Physics2DModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.InputLegacyModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.ScreenCaptureModule.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(GameManaged)/Outcore.dll" Private="false" />
+    <Reference Include="$(GameManaged)/UniWinApi.dll" Private="false" />
+    <Reference Include="$(GameManaged)/SharedOutcoreLibraries.dll" Private="false" />
+    <Reference Include="$(GameManaged)/DesktopControllerMessages.dll" Private="false" />
+    <Reference Include="$(GameManaged)/ProcessCommunicationManager.dll" Private="false" />
+    <Reference Include="$(BepCore)/BepInEx.dll" Private="false" />
+    <Reference Include="$(BepCore)/0Harmony.dll" Private="false" />
+  </ItemGroup>
+</Project>

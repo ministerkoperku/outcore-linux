@@ -1,0 +1,13 @@
+# Game files and decompiled game code are not ours to publish
+game/
+src/
+ref/
+deps/
+tools/patchcheck/out/
+tools/patchcheck/bin/
+tools/patchcheck/obj/
+OutcoreLinux/bin/
+OutcoreLinux/obj/
+package/OutcoreLinux/
+package/*.zip
+apt.log
